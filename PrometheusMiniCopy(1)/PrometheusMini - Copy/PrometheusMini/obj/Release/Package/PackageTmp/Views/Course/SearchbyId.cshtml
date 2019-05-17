@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PrometheusMini.Models.Courses_174852>
+
+
+<h2>Search</h2>
+@using (Html.BeginForm("SearchbyId", "Course", FormMethod.Get))
+{
+    <b>Enter Course Name to Search</b>
+    @Html.TextBox("CourseName")
+    <input type="submit" name="btnsubmit" value="Search" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+          
+        </tr>
+    }
+
+</table>

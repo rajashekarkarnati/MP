@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac9fdfe11e9d4ce7b241f0944507a400" Name="Diagram1">
+        <EntityTypeShape EntityType="PrometheusModel.Assignments_174852" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Courses_174852" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Enrollment_174852" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Homework_174852" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Planning_174852" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Student_174852" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Teachers_174852" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrometheusModel.Teaches_174852" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="PrometheusModel.FK__Assignmen__Cours__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Assignmen__HomeW__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Assignmen__Teach__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Enrollmen__Cours__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Homework___Cours__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Teaches_1__Cours__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Enrollmen__Stude__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="PrometheusModel.FK__Planning___Stude__5CD6CB2B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

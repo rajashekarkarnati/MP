@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PrometheusMini.Models.Planning_174852>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Monday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wednesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thursday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Friday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saturday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_174852.Username)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuesday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wednesday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thursday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saturday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_174852.Username)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+
+</table>

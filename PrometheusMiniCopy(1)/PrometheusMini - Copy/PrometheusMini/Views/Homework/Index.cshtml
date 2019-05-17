@@ -1,0 +1,86 @@
+﻿@model IEnumerable<PrometheusMini.Models.Homework_174852>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@if (ViewBag.Status == true)
+{
+    <script>
+        swal({
+            title: "Good job!",
+            text: "Updated Successfully!",
+            icon: "success",
+            button: "Ok",
+        });
+    </script>
+}
+else if (ViewBag.Deleted == true)
+{
+    <script>
+        swal({
+            title: "Good job!",
+            text: "Deleted Successfully!",
+            icon: "success",
+            button: "Ok",
+        });
+    </script>
+}
+<div>
+    <div class="col-lg-4">
+        <h2>Check Homework</h2>
+    </div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <input id="Button4" class="btn btn-info" type="submit" value="Create" onclick="location.href='@Url.Action("Create")'" />
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReqTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assignments_174852.HomeWorkId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignments_174852.HomeWorkId)
+            </td>
+            <td>
+                <input id="Button1" class="btn btn-info" type="submit" value="Edit" onclick="location.href='@Url.Action("Edit", new { id = item.HomeWorkId })'" />
+                <input id="Button2" class="btn btn-info" type="submit" value="Details" onclick="location.href='@Url.Action("Details",new { id = item.HomeWorkId })'" />
+                <input id="Button3" class="btn btn-info" type="submit" value="Delete" onclick="location.href='@Url.Action("Delete",new { id = item.HomeWorkId })'" />
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PrometheusMini.Models.Assignments_174852>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Courses_174852.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Homework_174852.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teachers_174852.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Courses_174852.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Homework_174852.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teachers_174852.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HomeWorkId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HomeWorkId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HomeWorkId })
+        </td>
+    </tr>
+}
+
+</table>

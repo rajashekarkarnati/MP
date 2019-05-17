@@ -1,0 +1,97 @@
+﻿@model IEnumerable<PrometheusMini.Models.Student_174852>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Session["StudentId"] != null)
+{
+    <h5>Hello @Session["Username"].ToString()</h5>
+}
+<style>
+    .w3-sidebar a {
+        font-family: "Roboto", sans-serif
+    }
+
+    body, h1, h2, h3, h4, h5, h6, .w3-wide {
+        font-family: "Montserrat", sans-serif;
+    }
+</style>
+<h1 align="centre">Managing Assignments was never this easy</h1>
+<div align="right">
+    <input id="Button2" class="btn btn-danger" type="submit" value="Logout" onclick="location.href='@Url.Action("LogOut")'" />
+</div>
+<html>
+<head>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .mySlides {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:460px; min-width:400px">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Student Operations
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="/Planning_174852/Create">Create Plan</a></li>
+                    <li><a href="/Planning_174852/Edit">Edit Planning</a></li>
+                    <li><a href="/Enrollment_174852/Create">Enroll For Courses</a></li>
+                    <li><a href="/Homework/Search">Homework</a></li>
+                </ul>
+            </div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <div>
+                <input id="Button2" class="btn btn-info" type="submit" value="Search yourself" onclick="location.href='@Url.Action("SearchbyID")'" />
+            </div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <div>
+                <input id="Button2" class="btn btn-info" type="submit" value="Update your information" onclick="location.href='@Url.Action("Update")'" />
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:460px; min-width:600px">
+            <div class="w3-content w3-section" style="max-width:500px">
+                <img class="mySlides" src="~/Images/college-education.jpg" style="width:100%">
+                <img class="mySlides" src="~/Images/purg-online-teaching-image-1.jpg" style="width:100%">
+                <img class="mySlides" src="~/Images/students-in-classroom.jpg" style="width:100%">
+            </div>
+        </div>
+    </div>
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,91 @@
+﻿@model PrometheusMini.Models.Student_174852
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login Here</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .w3-sidebar a {
+            font-family: "Roboto", sans-serif
+        }
+
+        body, h1, h2, h3, h4, h5, h6, .w3-wide {
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
+    <div class="form-horizontal">
+        <div class="w3-row-padding w3-center w3-margin-top">
+            <div class="w3-third">
+                <div class="w3-card w3-container" style="min-height:460px; min-width:500" >
+                    <h4>Student Login</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @*@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", required= "required" } })
+                            @*@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-success" value="Login" />
+                        </div>
+                    </div>
+                    <div>
+                        <input id="Button1" class="btn btn-primary" type="submit" value="Create Account" onclick="location.href='@Url.Action("Register")'" />
+                    </div>
+                    &nbsp;
+                    &nbsp;
+                    <div>
+                        <input id="Button2" class="btn btn-warning" type="submit" value="Admin Or Teacher? Login!" onclick="location.href='@Url.Action("Login","Admin")'" />
+                    </div>
+                </div>
+            </div>
+            <div class="w3-third">
+                <div class="w3-card w3-container" style="min-height:460px; min-width:800px">
+                    <h3>Students Can Enjoy:</h3><br>
+                    <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+                    <p>See Personal Details</p>
+                    <p>Enroll for Courses</p>
+                    <p>Plan your Homework</p>
+                    <p>Check Courses</p>
+                    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- Newsletter Modal -->
+<div id="newsletter" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+        <div class="w3-container w3-white w3-center">
+            <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+            <h2 class="w3-wide">NEWSLETTER</h2>
+            <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+            <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@

@@ -1,0 +1,185 @@
+﻿@model IEnumerable<PrometheusMini.Models.Assignments_174852>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<form action="Index" method="post">
+    <div class="row">
+        <div class="col-lg-4">
+            <label>CouserName</label>
+            <input type="text" name="CourseName" />
+        </div>
+        <div class="col-lg-3">
+            <button>Search</button>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <td>TeacherName</td>
+        <td>HomerworkID</td>
+        <td>CourseName</td>
+        <td>LongDescription</td>
+        <td>ReqTime</td>
+        <td>Deadline</td>
+        <td>Description</td>
+        <td>CourseId</td>
+        <td>CourseName</td>
+        <td>StartDate</td>
+        <td>EndDate</td>
+        @*<td>Action</td>*@
+    </tr>
+    @{ int count = 0; }
+    @if (ViewBag.count > 0)
+    {
+        foreach (var item in Model)
+        {
+            count++;
+            <td id="@String.Format("TeacherId{0}", count)">@item.Teachers_174852.FirstName</td>
+            <td id="@String.Format("HomeWorkId{0}", count)">@item.HomeWorkId</td>
+            <td id="@String.Format("CourseName{0}", count)">@item.Courses_174852.CourseName</td>
+            <td id="@String.Format("LongDescription{0}", count)">@item.Homework_174852.LongDescription</td>
+            <td id="@String.Format("ReqTime{0}", count)">@item.Homework_174852.ReqTime</td>
+            <td id="@String.Format("Deadline{0}", count)">@item.Homework_174852.Deadline</td>
+            <td id="@String.Format("Description{0}", count)">@item.Homework_174852.Description</td>
+            <td id="@String.Format("CourseId{0}", count)">@item.CourseId</td>
+            <td id="@String.Format("CourseName{0}", count)">@item.Courses_174852.CourseName</td>
+            <td id="@String.Format("StartDate{0}", count)">@item.Courses_174852.StartDate</td>
+            <td id="@String.Format("EndDate{0}", count)">@item.Courses_174852.EndDate</td>
+            //<td id="@String.Format("{0}", count)"><button class="btn-primary" onclick="OpenModel(@count)"><img src="~/Images/Edit-01-512.png" style="height:20px;width:20px;" /></button></td>
+        }
+    }
+    <div id="UpdateSelectedProduct" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">                
+                <form action="@Url.Action("UpdateAssignmentRecord", "Assignment")" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Update Record</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>TeacherId</label>
+                            <input type="number" name="TeacherId" class="form-control" id="TeacherId" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label>HomeWorkId</label>
+                            <input type="number" name="HomeWorkId" class="form-control" id="HomeWorkId" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label>CourseName</label>
+                            <input type="text" name="CourseName" class="form-control" id="CourseName" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label>LongDescription</label>
+                            <textarea type="text" class="form-control" name="LongDescription" id="LongDescription" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>ReqTime</label>
+                            <input type="date" name="ReqTime" id="ReqTime" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Deadline</label>
+                            <input type="date" name="Deadline" id="Deadline" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" name="Description" id="Description" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CourseId</label>
+                            <input type="number" name="CourseId" id="CourseId" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>StartDate</label>
+                            <input type="date" name="StartDate" id="StartDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>EndDate</label>
+                            <input type="date" name="EndDate" id="EndDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</table>
+
+@*@section scripts{
+    <script>
+        function OpenModel(count) {
+            $("#UpdateSelectedProduct").modal("toggle");
+            $("#TeacherId").val($('#TeacherId' + count).text());
+            $("#HomeWorkId").val($('#HomeWorkId' + count).text());
+            $("#CourseName").val($('#CourseName' + count).text());
+            $("#LongDescription").val($('#LongDescription' + count).text());
+            setDate('#ReqTime' + count, '#ReqTime');
+            $("#Description").val($('#Description' + count).text());
+            setDate('#Deadline' + count, '#Deadline');
+            $("#CourseId").val($('#CourseId' + count).text());
+            setDate('#StartDate' + count, '#StartDate');
+            setDate('#EndDate' + count, '#EndDate');
+        }
+        function setDate(id, setid) {
+            var date = new Date($(id).text());
+            var day = date.getDate().toString();
+            var month = (date.getMonth() + 1);
+            if (month < 10) {
+                month = '0' + month;
+            }
+            if (day < 10) {
+                day = '0' + day;
+            }
+            var year = date.getFullYear().toString();
+            var cur = (year + '-' + month + '-' + day).toString();
+            $(setid).val(cur);
+        }
+        function UpdateVal() {
+            var courseId = $('#CourseId').val();
+            var HomeworkId = $('#HomeWorkId').val();            
+            var LongDescription = $('#LongDescription').val();
+            var ReqTime = $('#ReqTime').val();
+            var Description = $('#Description').val();
+            var Deadline = $('#Deadline').val();
+            var StartDate = $('#StartDate').val();
+            var EndDate = $('#EndDate').val();
+            $.ajax({
+                url: "/Assignment/UpdateAssignmentRecord",
+                data: { 'CourseId': courseId, "HomeWorkId": HomeworkId, "LongDescription": LongDescription, "ReqTime": ReqTime, "Description": Description, "Deadline": Deadline, "StartDate": StartDate, "EndDate": EndDate },
+                type: 'POST',
+                dataType: "json",
+                success: function (result) {
+                    $("#UpdateSelectedProduct").modal("toggle");
+                    callIndex(courseId);
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+            $("#CourseId").val();
+        }
+        function callIndex(id) {
+            $.ajax({
+                url: "/Assignment/Index",
+                data: { 'CourseName': id},
+                dataType: 'html',
+                success: function (res) {
+                    swal({
+                        title: "Good job!",
+                        text: "Updated Successfully!",
+                        icon: "success",
+                        button: "Ok",
+                    });
+                }
+            });
+        }
+    </script>
+}*@

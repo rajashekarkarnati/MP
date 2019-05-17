@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PrometheusMini.Models.Teachers_174852>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Session["TeacherId"] != null)
+{
+    <h4>Hello @Session["Username"].ToString()</h4>
+}
+<div align="right">
+    <input id="Button2" class="btn btn-danger" type="submit" value="Logout" onclick="location.href='@Url.Action("LogOut")'" />
+</div>
+<h2>Teacher's Page</h2>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Teacher Operations
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="/Student/SearchbyId">Details of Students</a></li>
+        <li><a href="/Homework/Index">Schedule Homework Assignments</a></li>
+        <li><a href="/Enrollment_174852/Index1">Enrollment Details of students</a></li>
+        <li><a href="/Assignment/Index">Search Assignments</a></li>
+    </ul>
+</div>
+<div align="center">
+    <input id="Button2" class="btn btn-primary" type="submit" value="Search" onclick="location.href='@Url.Action("SearchbyId")'" />
+</div>
+&nbsp;
+&nbsp;
+&nbsp;
+<div align="center">
+    <input id="Button2" class="btn btn-info" type="submit" value="Update" onclick="location.href='@Url.Action("Update")'" />
+</div>
+&nbsp;
+&nbsp;
+&nbsp;
+<div align="center">
+    <input id="Button2" class="btn btn-warning" type="submit" value="Courses" onclick="location.href='@Url.Action("SearchbyId","Course" )'" />
+</div>
+&nbsp;
+&nbsp;
+&nbsp;
+<div align="center">
+    <input id="Button2" class="btn btn-warning" type="submit" value="Select Which course to teach" onclick="location.href='@Url.Action("Create","Teaches" )'" />
+</div>

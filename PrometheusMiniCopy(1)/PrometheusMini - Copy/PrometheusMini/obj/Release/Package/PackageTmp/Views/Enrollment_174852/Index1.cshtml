@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PrometheusMini.Models.Enrollment_174852>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enrollment Details of Students</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Courses_174852.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_174852.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Courses_174852.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_174852.Username)
+        </td>
+
+    </tr>
+}
+
+</table>

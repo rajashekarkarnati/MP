@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PrometheusMini.Models.Teachers_174852>
+
+@{
+    ViewBag.Title = "TIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Teacher Details</h2>
+
+<div align="center">
+    <input id="Button2" class="btn btn-info" type="submit" value="Search" onclick="location.href='@Url.Action("SearchT")'" />
+    <input id="Button3" class="btn btn-info" type="submit" value="Create New" onclick="location.href='@Url.Action("TCreate")'" />
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAdmin)
+        </td>
+        <td>
+            <input id="Button2" class="btn btn-warning" type="submit" value="Edit" onclick="location.href='@Url.Action("TEdit",new { id = item.TeacherId })'" />
+            <input id="Button2" class="btn btn-warning" type="submit" value="Details" onclick="location.href='@Url.Action("TDetails",new { id = item.TeacherId })'" />
+            <input id="Button2" class="btn btn-warning" type="submit" value="Delete" onclick="location.href='@Url.Action("TDelete",new { id = item.TeacherId })'" />
+        </td>
+    </tr>
+    }
+
+</table>

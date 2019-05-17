@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Training_20Feb_MumbaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Assignments_174852">
+    <Key>
+      <PropertyRef Name="HomeWorkId" />
+    </Key>
+    <Property Name="HomeWorkId" Type="int" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses_174852">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="20" />
+    <Property Name="StartDate" Type="varchar" MaxLength="20" />
+    <Property Name="EndDate" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Enrollment_174852">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Homework_174852">
+    <Key>
+      <PropertyRef Name="HomeWorkId" />
+    </Key>
+    <Property Name="HomeWorkId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Deadline" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ReqTime" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="LongDescription" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CourseId" Type="int" />
+  </EntityType>
+  <EntityType Name="Planning_174852">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="Monday" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Tuesday" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Wednesday" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Thursday" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Friday" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Saturday" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student_174852">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teachers_174852">
+    <Key>
+      <PropertyRef Name="TeacherId" />
+    </Key>
+    <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsAdmin" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Teaches_174852">
+    <Key>
+      <PropertyRef Name="TeacherId" />
+    </Key>
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" />
+  </EntityType>
+  <Association Name="FK__Assignmen__Cours__587E8C67">
+    <End Role="Courses_174852" Type="Self.Courses_174852" Multiplicity="1" />
+    <End Role="Assignments_174852" Type="Self.Assignments_174852" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses_174852">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Assignments_174852">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assignmen__HomeW__569643F5">
+    <End Role="Homework_174852" Type="Self.Homework_174852" Multiplicity="1" />
+    <End Role="Assignments_174852" Type="Self.Assignments_174852" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Homework_174852">
+        <PropertyRef Name="HomeWorkId" />
+      </Principal>
+      <Dependent Role="Assignments_174852">
+        <PropertyRef Name="HomeWorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assignmen__Teach__578A682E">
+    <End Role="Teachers_174852" Type="Self.Teachers_174852" Multiplicity="1" />
+    <End Role="Assignments_174852" Type="Self.Assignments_174852" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers_174852">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Assignments_174852">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Enrollmen__Cours__5B5AF912">
+    <End Role="Courses_174852" Type="Self.Courses_174852" Multiplicity="1" />
+    <End Role="Enrollment_174852" Type="Self.Enrollment_174852" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Courses_174852">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Enrollment_174852">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Enrollmen__Stude__5C4F1D4B">
+    <End Role="Student_174852" Type="Self.Student_174852" Multiplicity="0..1" />
+    <End Role="Enrollment_174852" Type="Self.Enrollment_174852" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_174852">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Enrollment_174852">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Homework___Cours__57CA5F50">
+    <End Role="Courses_174852" Type="Self.Courses_174852" Multiplicity="0..1" />
+    <End Role="Homework_174852" Type="Self.Homework_174852" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses_174852">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Homework_174852">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Planning___Stude__3AEE2980">
+    <End Role="Student_174852" Type="Self.Student_174852" Multiplicity="1" />
+    <End Role="Planning_174852" Type="Self.Planning_174852" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Student_174852">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Planning_174852">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teaches_1__Cours__5F2B89F6">
+    <End Role="Courses_174852" Type="Self.Courses_174852" Multiplicity="0..1" />
+    <End Role="Teaches_174852" Type="Self.Teaches_174852" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses_174852">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Teaches_174852">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Training_20Feb_MumbaiModelStoreContainer">
+    <EntitySet Name="Assignments_174852" EntityType="Self.Assignments_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Courses_174852" EntityType="Self.Courses_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Enrollment_174852" EntityType="Self.Enrollment_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Homework_174852" EntityType="Self.Homework_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Planning_174852" EntityType="Self.Planning_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Student_174852" EntityType="Self.Student_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Teachers_174852" EntityType="Self.Teachers_174852" Schema="sqluser" store:Type="Tables" />
+    <EntitySet Name="Teaches_174852" EntityType="Self.Teaches_174852" Schema="sqluser" store:Type="Tables" />
+    <AssociationSet Name="FK__Assignmen__Cours__587E8C67" Association="Self.FK__Assignmen__Cours__587E8C67">
+      <End Role="Courses_174852" EntitySet="Courses_174852" />
+      <End Role="Assignments_174852" EntitySet="Assignments_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assignmen__HomeW__569643F5" Association="Self.FK__Assignmen__HomeW__569643F5">
+      <End Role="Homework_174852" EntitySet="Homework_174852" />
+      <End Role="Assignments_174852" EntitySet="Assignments_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assignmen__Teach__578A682E" Association="Self.FK__Assignmen__Teach__578A682E">
+      <End Role="Teachers_174852" EntitySet="Teachers_174852" />
+      <End Role="Assignments_174852" EntitySet="Assignments_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Enrollmen__Cours__5B5AF912" Association="Self.FK__Enrollmen__Cours__5B5AF912">
+      <End Role="Courses_174852" EntitySet="Courses_174852" />
+      <End Role="Enrollment_174852" EntitySet="Enrollment_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Enrollmen__Stude__5C4F1D4B" Association="Self.FK__Enrollmen__Stude__5C4F1D4B">
+      <End Role="Student_174852" EntitySet="Student_174852" />
+      <End Role="Enrollment_174852" EntitySet="Enrollment_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Homework___Cours__57CA5F50" Association="Self.FK__Homework___Cours__57CA5F50">
+      <End Role="Courses_174852" EntitySet="Courses_174852" />
+      <End Role="Homework_174852" EntitySet="Homework_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Planning___Stude__3AEE2980" Association="Self.FK__Planning___Stude__3AEE2980">
+      <End Role="Student_174852" EntitySet="Student_174852" />
+      <End Role="Planning_174852" EntitySet="Planning_174852" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teaches_1__Cours__5F2B89F6" Association="Self.FK__Teaches_1__Cours__5F2B89F6">
+      <End Role="Courses_174852" EntitySet="Courses_174852" />
+      <End Role="Teaches_174852" EntitySet="Teaches_174852" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

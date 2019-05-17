@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PrometheusMini.Models.Student_174852>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student Details</h2>
+<div align="right">
+    <input id="Button1" class="btn btn-danger" type="submit" value="Logout" onclick="location.href='@Url.Action("LogOut","Admin")'" />
+</div>
+<div align="center">
+    <input id="Button2" class="btn btn-info" type="submit" value="Create New" onclick="location.href='@Url.Action("Create")'" />
+    <input id="Button3" class="btn btn-info" type="submit" value="Search Student" onclick="location.href='@Url.Action("SearchS")'" />
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Planning_174852.Monday)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Planning_174852.Monday)
+            </td>
+            <td>
+                <input id="Button2" class="btn btn-warning" type="submit" value="Edit" onclick="location.href='@Url.Action("Edit",new { id = item.StudentId })'" />
+                <input id="Button2" class="btn btn-warning" type="submit" value="Details" onclick="location.href='@Url.Action("Details",new { id = item.StudentId })'" />
+                <input id="Button2" class="btn btn-warning" type="submit" value="Delete" onclick="location.href='@Url.Action("Delete",new { id = item.StudentId })'" />
+            </td>
+        </tr>
+    }
+
+</table>
+<div align="center">
+    <input id="Button2" class="btn btn-primary" type="submit" value="For Teacher" onclick="location.href='@Url.Action("TIndex","Admi1")'" />
+    <input id="Button2" class="btn btn-primary" type="submit" value="For Courses" onclick="location.href='@Url.Action("CIndex","Admi1")'" />
+</div>
+
+
